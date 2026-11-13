@@ -1,0 +1,13 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>繰り返し設定 — MY TASK MANAGER</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script></head>
+<body><main class="wrap"><nav class="page-nav"><a href="index.html">タスク一覧</a><a class="current" href="recurring.html">繰り返し設定</a></nav>
+<section class="auth"><div class="auth-row"><div><strong>繰り返しタスク設定</strong><p id="authStatus" class="muted">ログイン状態を確認中...</p></div><button id="logoutButton" type="button" class="hidden">ログアウト</button></div><form id="loginForm" class="hidden"><input id="loginEmail" type="email" placeholder="メールアドレス" required><input id="loginPassword" type="password" placeholder="パスワード" required><button class="primary" type="submit">ログイン</button></form><p id="authMessage" class="message" role="status"></p></section>
+<div id="ruleArea" class="hidden"><h1>繰り返し設定</h1><p class="muted">ルールを登録すると、タスク一覧を開いたときに該当日分が自動生成されます。前回が未完了でも次回分を作成します。</p><p class="note">開始日から現在までの予定を生成します。過去のタスクを大量に作りたくない場合は、開始日を今日以降にしてください。先行登録は最大30日前です。</p>
+<form id="ruleForm" class="rule-form"><input id="ruleId" type="hidden"><label>タスク内容<input id="ruleContent" maxlength="200" required placeholder="例：資源ごみを出す"></label><label>分類<select id="ruleCategory"><option>処理</option><option>設計</option><option>創作</option></select></label><label>繰り返し方法<select id="repeatType"><option value="weekly">毎週：曜日指定</option><option value="nth_weekday">毎月：第○曜日指定</option><option value="monthly">毎月：日付指定</option><option value="yearly">毎年：月日指定</option></select></label>
+<div id="weeklyFields"><strong>曜日（複数選択可）</strong><div class="inline" id="weekdays"></div></div>
+<div id="nthFields" class="hidden"><strong>第何週（複数選択可）</strong><div class="inline" id="nths"></div><label>曜日<select id="nthWeekday"></select></label></div>
+<div id="monthlyFields" class="hidden"><label>毎月何日<select id="monthDay"></select></label></div>
+<div id="yearlyFields" class="hidden"><label>月<select id="yearMonth"></select></label><label>日<select id="yearDay"></select></label></div>
+<label>タスクを何日前に登録するか（0＝当日）<input id="leadDays" type="number" min="0" max="30" value="0" required></label><label>開始日<input id="startDate" type="date" required></label>
+<div class="form-actions"><button class="primary" id="saveButton" type="submit">ルールを登録</button><button id="cancelButton" type="button">入力をリセット</button></div></form>
+<p id="ruleMessage" class="message" role="status" aria-live="polite"></p><h2>登録済みのルール</h2><div id="ruleList"></div></div></main>
+<script src="js/db.js"></script><script src="js/recurrence.js"></script><script src="js/recurring.js"></script></body></html>
