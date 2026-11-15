@@ -40,3 +40,42 @@ input,select{border:1px solid #cbd3df;border-radius:7px;padding:10px;min-width:0
   .table-wrap tr:has(.empty){display:block;text-align:center}
   .table-wrap td.empty{display:block;padding:25px 8px}
 }
+
+/* 第71回：繰り返し設定ページ専用のスマホレイアウト */
+@media (max-width:650px) {
+  .recurring-page .wrap { padding:14px; }
+  .recurring-page .page-nav { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+  .recurring-page .page-nav a { text-align:center; padding:9px 5px; font-size:13px; }
+  .recurring-page .rule-form { padding:12px; gap:13px; margin:12px 0; }
+  .recurring-page .rule-form > label,
+  .recurring-page .rule-form > div { min-width:0; }
+  .recurring-page .rule-form input:not([type=checkbox]):not([type=hidden]),
+  .recurring-page .rule-form select { width:100%; max-width:100%; }
+  .recurring-page .rule-form .inline {
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:9px 5px; margin-top:9px;
+  }
+  .recurring-page .rule-form .inline label {
+    display:flex; align-items:center; justify-content:flex-start;
+    gap:5px; min-width:0; white-space:nowrap; font-size:13px;
+  }
+  .recurring-page .rule-form .inline input[type=checkbox] {
+    margin:0; width:17px; height:17px; flex:0 0 17px;
+  }
+  .recurring-page .rule-form .form-actions {
+    display:grid; grid-template-columns:1fr 1fr; gap:8px;
+  }
+  .recurring-page .rule-form .form-actions button { min-width:0; padding:10px 5px; font-size:13px; }
+  .recurring-page #ruleList { display:grid; gap:9px; margin-top:12px; }
+  .recurring-page .rule-item {
+    display:grid; grid-template-columns:minmax(0,1fr) auto;
+    align-items:start; gap:10px; padding:12px;
+    border:1px solid #e1e6ef; border-radius:10px;
+    background:#fff; min-width:0;
+  }
+  .recurring-page .rule-item > div:first-child { min-width:0; overflow-wrap:anywhere; }
+  .recurring-page .rule-item strong { display:block; font-size:14px; line-height:1.5; }
+  .recurring-page .rule-item small { font-size:11px; line-height:1.55; overflow-wrap:anywhere; }
+  .recurring-page .rule-actions { display:flex; flex-direction:column; flex-wrap:nowrap; gap:6px; }
+  .recurring-page .rule-actions button { min-width:54px; padding:7px 8px; font-size:12px; }
+}
